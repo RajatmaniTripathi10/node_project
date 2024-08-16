@@ -36,6 +36,8 @@ const server=http.createServer((req,res)=>{
     res.write('<html lang="en">');
     res.write('<head><title>My First Page</title></head>')
     res.write('<body><h1>This is title Page</h1></body>')
+    res.write('</html>')
+    res.end()
     //process.exit() //This help to move out of loop events
    
 })
