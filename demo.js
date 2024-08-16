@@ -2,6 +2,7 @@ const http=require('http')
 const fs=require('fs')
 const server=http.createServer((req,res)=>{
     const url=req.url;
+    const method=req.method;
     if(url==='/'){
         res.setHeader('Content-Type', 'text/html');
         res.write('<!DOCTYPE html>');
@@ -15,7 +16,17 @@ const server=http.createServer((req,res)=>{
     }
     //Redirecting to message
     if (url === '/message' && req.method === 'POST') {
-        fs.writeFileSync('message.txt', 'DUMMY');
+        const body=[];
+        req.on('data' ,(chunk)=>{ //This will listen to certain event
+            console.log(chunk)
+            body.push(chunk); //We push our chuck here, this is stream
+        }); 
+        req.on('end', () => {
+            const parsedBody = Buffer.concat(body).toString();
+            console.log(parsedBody)
+            const message=parsedBody.split('=')[1];
+            fs.writeFileSync('message.txt', message);
+        })
         res.writeHead(302, { Location: '/' });
         return res.end();
     }
