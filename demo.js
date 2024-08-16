@@ -26,10 +26,16 @@ const server=http.createServer((req,res)=>{
             console.log(parsedBody)
             const message=parsedBody.split('=')[1];
             fs.writeFileSync('message.txt', message);
+            res.writeHead(302, { Location: '/' });
+            return res.end();
         })
-        res.writeHead(302, { Location: '/' });
-        return res.end();
+        
     }
+    res.setHeader('Content-Type', 'text/html');
+    res.write('<!DOCTYPE html>');
+    res.write('<html lang="en">');
+    res.write('<head><title>My First Page</title></head>')
+    res.write('<body><h1>This is title Page</h1></body>')
     //process.exit() //This help to move out of loop events
    
 })
