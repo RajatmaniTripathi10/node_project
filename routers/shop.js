@@ -1,9 +1,11 @@
-const express=require('express')
-const path=require('path')
-const routes=express.Router();
+const express = require('express');
+const adminData = require('./admin'); // Import the products along with routes
+
+const routes = express.Router();
 
 routes.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname,'../','Views','shop.html'));
-  });
+  const products = adminData.products;  // Access the products from adminData
+  res.render('shop', { prods: products, docTitle: 'Shop' });  // Pass docTitle as well for the title in the template
+});
 
-module.exports=routes
+module.exports = routes;
