@@ -6,8 +6,7 @@ const products = [];
 
 //  /admin/ad-product=>GET
 routes.get('/add-product', (req, res, next) => {
-  console.log('In middleware');
-  res.sendFile(path.join(__dirname, '../', 'Views', 'add-product.html'));
+  res.render('add-product',{pageTitle:'Add Product',path:'/admin/add-product'})
   // next(); // Allow the request to continue to the next middleware function in the application’s request-response cycle.
 });
 
