@@ -4,6 +4,7 @@ const path = require('path'); // Import the path module for working with file pa
 const adminData = require('./routers/admin'); // Import the admin router module (not used in this code)
 const adminRoutes = require('./routers/admin').routes; // Import the admin routes as a middleware
 const shopRoutes = require('./routers/shop'); // Import the shop routes
+const handlebars = require('express-handlebars');
 
 const bodyParse=require('body-parser'); // Import the body-parser middleware for parsing request bodies
 
@@ -15,7 +16,9 @@ app.use(express.static(path.join(__dirname,'public'))); // Serve static files fr
 app.use('/admin',adminRoutes); // Mount the admin routes at the '/admin' path
 app.use(shopRoutes); // Mount the shop routes at the root path ('/')
 
-app.set('view engine', 'pug'); // Set the view engine to Pug (a templating engine)
+app.engine('handlebars', handlebars());
+app.set('view engine', 'handlebars');
+//app.set('view engine', 'pug'); // Set the view engine to Pug (a templating engine)
 //app.set('view engine', 'Views'); // This line is commented out, but it would set the view engine to 'Views' (not a valid view engine)
 
 app.use((req,res,next)=>{ // Define a catch-all route for 404 errors
