@@ -4,25 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{pageTitle}}</title>
+    <title>Page Not Found</title>
     <link rel="stylesheet" href="/css/main.css">
-    {{#block "styles"}}
-    {{/block}}
 </head>
 <body>
     <header class="main-header">
         <nav class="main-header__nav">
             <ul class="main-header__item-list">
-                <li class="main-header__item">
-                    <a class="active" href="/">Shop</a>
-                </li>
-                <li class="main-header__item">
-                    <a href="/admin/add-product" class="{{#if (path === '/admin/add-product')}}active{{/if}}">Add Product</a>
-                </li>
+                {{#each navItems}}
+                <li class="main-header__item"><a {{#if active}}class="active"{{/if}} href="{{href}}">{{text}}</a></li>
+                {{/each}}
             </ul>
         </nav>
     </header>
-    {{#block "content"}}
-    {{/block}}
+    <h1>Page Not Found!</h1>
 </body>
 </html>

@@ -16,8 +16,9 @@ app.use(express.static(path.join(__dirname,'public'))); // Serve static files fr
 app.use('/admin',adminRoutes); // Mount the admin routes at the '/admin' path
 app.use(shopRoutes); // Mount the shop routes at the root path ('/')
 
-app.engine('handlebars', handlebars());
-app.set('view engine', 'handlebars');
+//app.engine('hbs', handlebars());
+app.set('view engine', 'ejs');
+//app.set('view engine', 'hbs');
 //app.set('view engine', 'pug'); // Set the view engine to Pug (a templating engine)
 //app.set('view engine', 'Views'); // This line is commented out, but it would set the view engine to 'Views' (not a valid view engine)
 
