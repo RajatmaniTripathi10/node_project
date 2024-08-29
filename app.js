@@ -1,6 +1,8 @@
 const express = require('express'); // Import the Express.js framework
 const path = require('path'); // Import the path module for working with file paths
 
+const errorController=require('./controllers/error')
+
 const adminData = require('./routers/admin'); // Import the admin router module (not used in this code)
 const adminRoutes = require('./routers/admin').routes; // Import the admin routes as a middleware
 const shopRoutes = require('./routers/shop'); // Import the shop routes
@@ -22,9 +24,7 @@ app.set('view engine', 'ejs');
 //app.set('view engine', 'pug'); // Set the view engine to Pug (a templating engine)
 //app.set('view engine', 'Views'); // This line is commented out, but it would set the view engine to 'Views' (not a valid view engine)
 
-app.use((req,res,next)=>{ // Define a catch-all route for 404 errors
-  res.status(404).render('404',{pageTitle:'404 Page Not Found'}) // Send a 404 response with the '404.html' file from the 'Views' folder
-}); // This route will be called if no other route matches the request
+app.use(errorController.get404Page); // This route will be called if no other route matches the request
 
 app.listen(3000, () => { // Start the server listening on port 3000
   console.log('Server started on port 3000'); // Log a message to the console when the server starts
