@@ -1,1 +1,1 @@
-[{"title":"Book"},{"title":"Book"},{"title":"Another"}]
+[{"title":{"title":"This is a demo book","price":"99","description":"This is a demo of app","imageURL":"https://www.udemy.com/course/nodejs-the-complete-guide/learn/lecture/11602992?start=75#overview"}}]

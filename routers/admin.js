@@ -1,13 +1,16 @@
 const express = require('express');
 const path = require('path');
-const productController=require('../controllers/products')
+const adminController=require('../controllers/admin')
 
 const routes = express.Router();
 
 //  /admin/ad-product=>GET
-routes.get('/add-product',productController.getAddProduct); //Passes the reference of the getProduct method
+routes.get('/add-product',adminController.getAddProduct); //Passes the reference of the getProduct method
+
+//  /admin/products
+routes.get('/products',adminController.getProduct); //Passes the reference of the getProducts method
 
 // /admin/ad-product=>POST
-routes.post('/add-product', productController.postAddProduct)
+routes.post('/add-product', adminController.postAddProduct)
 
 module.exports = { routes};

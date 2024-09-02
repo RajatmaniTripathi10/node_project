@@ -1,0 +1,34 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form class="product-form" action="/admin/add-product" method="POST">
+            <div class="form-control">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="<%= typeof title !== 'undefined' ? title : '' %>">
+            </div>
+
+            <div class="form-control">
+                <label for="imageURL">Image URL</label>
+                <input type="text" name="imageURL" id="imageURL" value="<%= typeof imageURL !== 'undefined' ? imageURL : '' %>">
+            </div>
+
+            <div class="form-control">
+                <label for="price">Price</label>
+                <input type="text" name="price" id="price" value="<%= typeof price !== 'undefined' ? price : '' %>">
+            </div>
+
+            <div class="form-control">
+                <label for="description">Description</label>
+                <textarea name="description" id="description"><%= typeof description !== 'undefined' ? description : '' %></textarea>
+            </div>
+
+            <button class="btn" type="submit">Add Product</button>
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>
