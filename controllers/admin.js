@@ -5,11 +5,14 @@ exports.getAddProduct=(req, res, next) => {
     // next(); // Allow the request to continue to the next middleware function in the application’s request-response cycle.
 }
 exports.postAddProduct = (req, res, next) => {
-    const { title, price, description, imageURL } = req.body;
-    const product = new Product({ title, price, description, imageURL });
+    const title = req.body.title;
+    const imageUrl = req.body.imageUrl;
+    const price = req.body.price;
+    const description = req.body.description;
+    const product = new Product(title, imageUrl, description, price);
     product.save();
     res.redirect('/');
-}
+  };
 
 exports.getProduct=(req,res,next)=>{
     Product.fetchAll()
