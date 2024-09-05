@@ -1,13 +1,13 @@
 const Product=require('../models/productModel')
 
-exports.getProduct = (req, res, next) => {
+exports.getProducts = (req, res, next) => {
     Product.fetchAll()
         .then(products => {
             res.render('shop/product-list', { 
                 prods: products, 
                 pageTitle: 'All Products',
                 path: '/products',
-                hasProducts: products.length > 0 
+                //hasProducts: products.length > 0 
             });  
         })
         .catch(err => {
